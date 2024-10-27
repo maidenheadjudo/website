@@ -1,18 +1,20 @@
 <html>
   <head>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
     <style>
       img { width: 100%; }
-      section { background-color: #eee; border: 1px solid #ccc; margin: 2px; padding: 10px; }
+      section { background-color: #eee; border: 1px solid #ccc; margin: 10px; padding: 10px; }
+      footer * { color: #888; }
+      h1,h2 { margin-top: 0; }
     </style>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <script>
-      var map = L.map('map').setView([51.505, -0.09], 13);
-    </script>
   </head>
-  <body>
-    <header><img src="logo.png" style="margin: auto; display: block; width: 10vw;"></header>
-    <main style="max-width: 750px; margin: auto;">
+  <body style="font-family: Sans-Serif;">
+    <header style="display: flex; justify-content: center; padding: 20px; margin: 0; margin-top: 10px;background-color: #eee;">
+      <img src="logo.png" style="width: 10vw;">
+    </header>
+    <main style="max-width: 750px; margin: 40px auto;">
       <h1>Maidenhead Judo Club</h1>
       <section><img src="banner.jpg"></section>
       <section>
@@ -26,9 +28,34 @@
           <li>Learn a skill for life</li>
           <li>Compete in competition</li>
         </ul>
+        <p>Get in touch today! Call Jack on <a href="tel:+4407775990723">07775 990723</a>  or use the links below</p>
       </section>
-      <section><div id="map" style="height: 180px;"></div></section>
+      <section><div id="map" style="height: 400px;"></div></section>
     </main>
-    <footer></footer>
+    <footer style="display: flex; justify-content: center; padding: 20px; margin: 0; margin-top: 10px; background-color: #eee;">
+      <a href="mailto:info@maidenheadjudo.org.uk" title="Email">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+      <a href="https://www.facebook.com/maidenheadjudoclub" title="Facebook">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-facebook-square fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+      <a href="https://twitter.com/MaidenheadJC" title="Twitter">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+    </footer>
+    <script>
+      var map = L.map('map', {center: [51.52425, -0.72526], zoom: 13, scrollWheelZoom: false});
+      var marker = L.marker([51.52425, -0.72526]).addTo(map);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
+    </script>
   </body>
 </html>
